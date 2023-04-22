@@ -1,0 +1,37 @@
+<p>ようこそ、ながのCAKEへ！</p>
+<p>このサイトは、ケーキ販売のECサイトになります。</p>
+<p>会員でない方も商品の閲覧はできますが、</p>
+<p>購入には会員登録が必要になります。</p>
+
+<h1>新着商品</h1>
+<table>
+  <thead>
+    <% @items.each do |item| %>
+    <tr>
+      <th class="header1"><% image_tag item.image_id %></th>
+      <th class="header2"><% image_tag item.image_id %></th>
+      <th class="header3"><% image_tag item.image_id %></th>
+      <th class="header4"><% image_tag item.image_id %></th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.name %></td>
+      <td><%= item.name %></td>
+      <td><%= item.name %></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= item.price %></td>
+      <td><%= item.price %></td>
+      <td><%= item.price %></td>
+      <td><%= item.price %></td>
+    </tr>
+    <% end %>
+  </tfoot>
+</table>
+
+<!--新着一覧を作成すること！-->
