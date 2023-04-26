@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
-
-
-  devise_for :customers, skip:[:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
     root to: 'homes#top'
@@ -21,7 +11,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' =>'customers#edit'
     patch 'customers' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
-    patch 'customers/withdrawl' => 'customers#withdrawal'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
 
     resources :cart_items, only: [:index,:update,:create,:destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
@@ -42,5 +32,15 @@ Rails.application.routes.draw do
     resources :orders, only: [:update,:show]
     resources :order_details, only: [:update]
   end
+
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+
+
+  devise_for :customers, skip:[:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
 end

@@ -1,0 +1,67 @@
+
+<h3>会員情報編集</h3>
+<%= form_with model: @customer, url: customers_path do |f| %>
+<table>
+  <tr>
+    <th>氏名</th>
+    <td>
+      <div>
+        <p><%= f.text_field :first_name, placeholder:current_customer.first_name, class: "form-control first_name" %>
+             <%= f.text_field :last_name,placeholder:current_customer.last_name, class: "form-control last_name" %>
+        </p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>フリガナ</th>
+    <td>
+       <div>
+        <p><%= f.text_field :first_name_kana, placeholder:current_customer.first_name_kana, class: "form-control first_name_kana" %>
+           <%= f.text_field :last_name_kana, placeholder:current_customer.last_name_kana, class: "form-control last_name_kana" %>
+        </p>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td>
+       <div>
+        <p><%= f.text_field :postal_code, placeholder:current_customer.postal_code, class: "form-control postal_code" %> </p>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>
+       <div>
+        <p><%= f.text_field :address, placeholder:current_customer.address, class: "form-control address" %> </p>
+       </div>
+    </td>
+  </tr>
+   <tr>
+    <th>電話番号</th>
+    <td>
+       <div>
+        <p><%= f.text_field :telephone_number, placeholder:current_customer.telephone_number, class: "form-control telephone_number" %> </p>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+       <div>
+        <p><%= f.text_field :email, placeholder:current_customer.email, class: "form-control email" %> </p>
+       </div>
+    </td>
+  </tr>
+
+</table>
+
+
+<%= f.submit "編集内容を保存" %>
+
+<% end %>
+
+<%= link_to "退会する", customers_confirm_path %>
+
+
