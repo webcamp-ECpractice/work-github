@@ -1,0 +1,28 @@
+
+<%= image_tag @item.image %>
+
+<%= form_with model: @item, url: cart_items_path do |f| %>
+
+
+<table>
+  <tbody>
+    <tr>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td><%= @item.introduction %></td>
+    </tr>
+     <tr>
+      <td>¥<%= @item.add_tax_price.to_s(:delimited) %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.select :amount, [["1個", "1"], ["2個", "2"],["3個","3"],["4個","4"]], include_blank: "個数選択" %>
+        <%= f.submit "カートに入れる"%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<% end %>
