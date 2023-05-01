@@ -1,4 +1,4 @@
-<h1>商品一覧(全XX件)</h1>
+<h1>商品一覧(全<%= @items_amount.where(is_active: true).count %>件)</h1>
 
 
 <% @items.each do |item| %>
