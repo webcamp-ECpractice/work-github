@@ -1,8 +1,7 @@
 
 <%= image_tag @item.image %>
 
-<%= form_with model: @item, url: cart_items_path do |f| %>
-
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
 
 <table>
   <tbody>
@@ -19,7 +18,8 @@
       <td>
         <%= f.select :amount, [["1個", "1"], ["2個", "2"],["3個","3"],["4個","4"]], include_blank: "個数選択" %>
         <%= f.submit "カートに入れる"%>
-        <%= f.hidden_field :amount, :value => @item.id %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
       </td>
     </tr>
   </tbody>
