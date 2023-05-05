@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'admin' => 'homes#top'
+    get '/' => 'homes#top'
 
     resources :items, except: [:destroy]
     resources :genres, only: [:create,:index,:edit,:update]
