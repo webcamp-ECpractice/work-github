@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.where(customer_id: current_customer.id)
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
