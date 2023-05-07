@@ -2,6 +2,10 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
 
+  def address_display
+    '〒' + postal_code + ' ' + address + ' ' + name_address
+  end
+
   enum payment_method: {
     credit:1, #クレジットカード
     bank:2 #銀行振込

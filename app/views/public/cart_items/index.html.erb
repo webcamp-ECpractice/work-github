@@ -1,6 +1,6 @@
 <h3>ショッピングカート</h3>
 
-<%= link_to "カート内を空にする", cart_items_destroy_all_path, method: :delete %>
+<%= link_to "カート内を空にする", cart_items_destroy_all_path, method: :delete ,"data-confirm" => "本当に空にしますか？" %>
 
 <table>
   <thead>
@@ -21,7 +21,7 @@
       <td>
         <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
           <%= f.hidden_field :item_id, :value => cart_item.item_id %>
-          <%= f.select :amount, *[1..5] %>
+          <%= f.select :amount, *[1..10] %>
           <%= f.submit "変更" %>
         <% end %>
 
