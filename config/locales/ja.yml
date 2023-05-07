@@ -5,7 +5,6 @@ ja:
         credit: "クレジットカード"
         bank: "銀行振込"
 
-    order:
       is_ordered:
         no_payment: "入金待ち"
         ok_payment: "入金確認"
