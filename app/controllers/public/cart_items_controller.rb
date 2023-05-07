@@ -24,10 +24,16 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    cart_item = current_customer.cart_items.find_by(item_id: params[:item_id])
 
-   cart_item = CartItem.new(cart_item_params)
-   cart_item.save
-   redirect_to cart_items_path
+    if cart_item
+      cart_item.increment!(:amount, params[:amount].to_i)
+      redirect_to cart_items_path
+    else
+      cart_item = CartItem.new(cart_item_params)
+      cart_item.save
+      redirect_to cart_items_path
+    end
   end
 
  private

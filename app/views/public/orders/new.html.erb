@@ -27,20 +27,22 @@
 
 
     <%= f.radio_button :address, "addresses_id" %>
-    <%= f.label :, "郵便番号" %>
+    <%= f.label :addresses_id, "新しいお届け先" %>
+    <div>
+      <%= f.label :postal_code, "郵便番号" %>
+　　  <%= f.text_field :postal_code %>
+    </div>
 
-    <%= f.label :postal_code, "郵便番号" %>
-　　<%= f.text_field :postal_code, placeholder:postal_code %>
+    <div>
+      <%= f.label :address, "住所" %>
+　  　<%= f.text_field :address %>
+    </div>
 
+    <div>
+      <%= f.label :name_address, "宛名" %>
+　  　<%= f.text_field :name_address %>
+    </div>
 
-
-    <%= f.label :address, "住所" %>
-　　<%= f.text_field :address, placeholder:address %>
-
-
-
-    <%= f.label :name_address, "宛名" %>
-　　<%= f.text_field :name_address, placeholder:name_address %>
-
+    <%= f.submit '確認画面へ進む' %>
 
   <% end %>
