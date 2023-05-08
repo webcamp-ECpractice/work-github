@@ -1,0 +1,26 @@
+<h3>注文履歴詳細</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>購入者</td>
+      <td><%= @customer.first_name %><%= @customer.last_name %></td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= @customer.order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @customer.address_display %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @customer.order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <td><%= @customer.is_ordered %></td>
+    </tr>
+  </tbody>
+</table>

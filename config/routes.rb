@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create,:index,:edit,:update]
     resources :customers, only: [:index,:show,:edit,:update]
     resources :orders, only: [:update,:show]
+    get 'orders/customer_order/:id' => 'orders#customer_order'
     resources :order_details, only: [:update]
   end
 

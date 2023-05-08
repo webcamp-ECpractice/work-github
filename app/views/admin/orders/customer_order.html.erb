@@ -1,0 +1,31 @@
+<h2><%= @customer.first_name %><%= @customer.last_name %>さんの注文履歴</h2>
+
+<table>
+  <thead>
+    <th>
+      <tr>
+        <td>購入日時</td>
+        <td>注文個数</td>
+        <td>注文ステータス</td>
+      </tr>
+    </th>
+  </thead>
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+      <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+
+      <% sum = 0 %>
+      <% order.order_details.each do |order_detail| %>
+
+      <% sum += order_detail.items_amount %>
+
+      <% end %>
+      <td><%= sum %></td>
+      <td><%= order.is_ordered_i18n %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<%= paginate @orders %>
