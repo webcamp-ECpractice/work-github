@@ -9,15 +9,25 @@
       <th>注文ステータス</th>
     </tr>
   </thead>
+  <% @orders.each do |order| %>
   <tbody>
-    <% @orders.each do |order| %>
-      <td><%= order.created_at %></td>
+    <tr>
+      <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
 
-      <td><%= order.name %></td>
-      <td></td>
-      <td><%= order.is_ordered %></td>
-    <% end %>
+      <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
+
+      <% sum = 0 %>
+      <% order.order_details.each do |order_detail| %>
+
+      <% sum += order_detail.items_amount %>
+
+      <% end %>
+      <td><%= sum %></td>
+      <td><%= order.is_ordered_i18n %></td>
+    </tr>
   </tbody>
+  <% end %>
 </table>
 
 <%= paginate @orders %>
+
