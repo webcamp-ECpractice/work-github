@@ -49,9 +49,10 @@ class Public::OrdersController < ApplicationController
       order_detail.unit_price = cart_item.item.price
 
       order_detail.save
-      redirect_to orders_complete_path
-      cart_items.destroy_all
+
     end
+    cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def complete
