@@ -7,6 +7,10 @@ class OrderDetail < ApplicationRecord
     unit_price * items_amount
   end
 
+  def add_tax_price
+    (self.item.price * 1.1).round
+  end
+
   enum is_maked: {
     no_making: 1, #着手不可
     waiting_for_making: 2, #製作待ち

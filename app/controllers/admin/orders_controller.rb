@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = @order.customer
     @order_details = @order.order_details
+    @total = @order_details.inject(0) {|sum,order| sum + order.subtotal }
   end
 
   def customer_order
