@@ -59,6 +59,15 @@ class Public::OrdersController < ApplicationController
 
   end
 
+  def index
+    @order = current_customer.order
+
+  end
+
+  def show
+
+  end
+
   private
 
   def order_params
