@@ -32,7 +32,7 @@ class Order < ApplicationRecord
   enum is_ordered: {
     no_payment:1, #入金待ち
     ok_payment:2, #入金確認
-    making:3, #動作中
+    making:3, #製作中
     preparing_delivery:4,#発送準備中
     delivered:5 #発送済み
   }
