@@ -8,10 +8,10 @@
   <thead>
     <% @items.each do |item| %>
     <tr>
-      <th class="header1"><%= image_tag item.image %></th>
-      <th class="header2"><%= image_tag item.image %></th>
-      <th class="header3"><%= image_tag item.image %></th>
-      <th class="header4"><%= image_tag item.image %></th>
+      <th class="header1"><%= image_tag item.get_image %></th>
+      <th class="header2"><%= image_tag item.get_image %></th>
+      <th class="header3"><%= image_tag item.get_image %></th>
+      <th class="header4"><%= image_tag item.get_image %></th>
     </tr>
 
   </thead>
