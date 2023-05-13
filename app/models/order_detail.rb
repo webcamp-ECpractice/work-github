@@ -3,12 +3,13 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
 
 
-  def subtotal
-    unit_price * items_amount
-  end
-
   def add_tax_price
     (self.item.price * 1.1).round
+  end
+
+
+  def subtotal
+    add_tax_price * items_amount
   end
 
   enum is_maked: {

@@ -19,6 +19,9 @@
           <%= order.address %><br>
           <%= order.name_address %>
       </td>
+      <% @order_details.each do |order_detail| %>
+        <td><%= order_detail.item.name %></td>
+      <% end %>
       <td><%= order.payment_amount %></td>
       <td><%= order.is_ordered %></td>
       <td><% link_to "表示する" , order_path(order.id) %> </td>

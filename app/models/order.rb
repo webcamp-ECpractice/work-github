@@ -14,6 +14,14 @@ class Order < ApplicationRecord
     add_tax_price * order_detail.items_amount
   end
 
+ def self.total_price(order)
+    array = []
+    orders.each do |order|
+      array << order.order_details.unit_price * order.order_details.items_amount
+    end
+
+    return (array.sum * 1.1).floor
+  end
 
   enum payment_method: {
     credit:1, #クレジットカード
