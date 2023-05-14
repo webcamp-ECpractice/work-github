@@ -1,28 +1,25 @@
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
 
-<h1>新着商品</h1>
+<div class="container p-5">
 
-<% @items.each do |item| %>
-  <table>
-    <thead>
-      <tr>
-        <th><%= image_tag item.get_image %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= link_to item.name ,item_path(item.id) %></td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td><%= item.add_tax_price %></td>
-      </tr>
-    </tfoot>
-  </table>
-<% end %>
+  <p>ようこそ、ながのCAKEへ！</p>
+  <p>このサイトは、ケーキ販売のECサイトになります。</p>
+  <p>会員でない方も商品の閲覧はできますが、</p>
+  <p>購入には会員登録が必要になります。</p>
 
-<%= link_to "全ての商品を見る＞"  ,items_path %>
+  <h1>新着商品</h1>
+
+  <div class="row justify-content-around" >
+
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image,size: "200x200" %>
+
+          <p><%= item.name %></p>
+
+          <p>￥<%= item.add_tax_price %></p>
+        <% end %>
+
+      <% end %>
+  </div>
+    <%= link_to "全ての商品を見る＞", items_path, class:"text-right"%>
+</div>
