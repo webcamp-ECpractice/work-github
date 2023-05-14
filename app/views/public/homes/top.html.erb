@@ -4,34 +4,25 @@
 <p>購入には会員登録が必要になります。</p>
 
 <h1>新着商品</h1>
-<table>
-  <thead>
-    <% @items.each do |item| %>
-    <tr>
-      <th class="header1"><%= image_tag item.get_image %></th>
-      <th class="header2"><%= image_tag item.get_image %></th>
-      <th class="header3"><%= image_tag item.get_image %></th>
-      <th class="header4"><%= image_tag item.get_image %></th>
-    </tr>
 
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= item.name %></td>
-      <td><%= item.name %></td>
-      <td><%= item.name %></td>
-      <td><%= item.name %></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td><%= item.price %></td>
-      <td><%= item.price %></td>
-      <td><%= item.price %></td>
-      <td><%= item.price %></td>
-    </tr>
-    <% end %>
-  </tfoot>
-</table>
+<% @items.each do |item| %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= image_tag item.get_image %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to item.name ,item_path(item.id) %></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><%= item.add_tax_price %></td>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>
 
-<!--新着一覧を作成すること！-->
+<%= link_to "全ての商品を見る＞"  ,items_path %>
