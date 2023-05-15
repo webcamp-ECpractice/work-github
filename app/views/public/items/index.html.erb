@@ -1,26 +1,21 @@
+<div class="container p-5">
+
 <h1>商品一覧(全<%= @items_amount.where(is_active: true).count %>件)</h1>
 
 
-<% @items.each do |item| %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= image_tag item.get_image %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= item.name %></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>¥<%= item.add_tax_price.to_s(:delimited) %></td>
-    </tr>
-  </tfoot>
-</table>
+  <div class="row justify-content-around" >
 
- <% end %>
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image,size: "250x250" %>
 
- <%= paginate @items %>
+          <p><%= item.name %></p>
+
+          <p>￥<%= item.add_tax_price %></p>
+        <% end %>
+      <% end %>
+  </div>
+
+  <%= paginate @items %>
+ </div>
