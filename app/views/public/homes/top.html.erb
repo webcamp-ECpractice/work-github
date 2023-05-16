@@ -1,12 +1,14 @@
 
 <div class="container p-5">
 
-  <p>ようこそ、ながのCAKEへ！</p>
-  <p>このサイトは、ケーキ販売のECサイトになります。</p>
-  <p>会員でない方も商品の閲覧はできますが、</p>
-  <p>購入には会員登録が必要になります。</p>
+  <h4>ようこそ、ながのCAKEへ！</h4>
+  <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
+  <h4>会員でない方も商品の閲覧はできますが、</h4>
+  <h4>購入には会員登録が必要になります。</h4>
 
-  <h1>新着商品</h1>
+  <div class="row pt-5 pb-5">
+    <h1 class="font-weight-bold">新着商品</h1>
+  </div>
 
   <div class="row justify-content-around" >
 
@@ -14,12 +16,13 @@
         <%= link_to item_path(item.id) do %>
           <%= image_tag item.image,size: "200x200" %>
 
-          <p><%= item.name %></p>
+          <h5 class="pt-3"><%= item.name %></h5>
 
-          <p>￥<%= item.add_tax_price %></p>
+          <h5 class="pt-3">￥<%= item.add_tax_price %></h5>
         <% end %>
 
       <% end %>
   </div>
-    <%= link_to "全ての商品を見る＞", items_path, class:"text-right"%>
+
+    <h4 class="pt-4"><%= link_to "全ての商品を見る＞", items_path %></h4>
 </div>

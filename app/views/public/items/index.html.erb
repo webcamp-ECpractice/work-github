@@ -1,6 +1,6 @@
 <div class="container p-5">
 
-<h1>商品一覧(全<%= @items_amount.where(is_active: true).count %>件)</h1>
+<h1 class="font-weight-bold">商品一覧(全<%= @items_amount.where(is_active: true).count %>件)</h1>
 
 
 
@@ -10,12 +10,14 @@
         <%= link_to item_path(item.id) do %>
           <%= image_tag item.image,size: "250x250" %>
 
-          <p><%= item.name %></p>
+          <h5 class="pt-3"><%= item.name %></h5>
 
-          <p>￥<%= item.add_tax_price %></p>
+          <h5 class="pt-3 pb-3">￥<%= item.add_tax_price %></h5>
         <% end %>
       <% end %>
   </div>
+  <h4>
+    <%= paginate @items %>
+  </h4>
 
-  <%= paginate @items %>
  </div>
