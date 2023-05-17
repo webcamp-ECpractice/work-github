@@ -1,20 +1,20 @@
 <div class="container-fluid m-5">
 
-  <h3>商品一覧</h3>
+  <h3><span class="bg-warning">商品一覧</span></h3>
 
 
-  <div class="button">
+  <div class="button mb-3">
     <%= link_to "＋", new_admin_item_path, class:"btn btn-secondary" %>
   </div>
 
-  <table>
+  <table class="table">
     <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
+      <tr class="table-warning">
+        <th class="h5">商品ID</th>
+        <th class="h5">商品名</th>
+        <th class="h5">税抜価格</th>
+        <th class="h5">ジャンル</th>
+        <th class="h5">ステータス</th>
       </tr>
     </thead>
     <tbody>
