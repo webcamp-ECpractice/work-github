@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+   before_action :authenticate_customer!
 
   def show
   end
@@ -25,6 +26,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     sign_out
+    flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
 
   end

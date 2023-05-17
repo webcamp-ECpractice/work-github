@@ -3,6 +3,11 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details
 
+  validates :payment_method, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name_address, presence: true
+
   def address_display
     '〒' + postal_code + ' ' + address + ' ' + name_address
   end
