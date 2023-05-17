@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
+
 
   end
 
@@ -29,6 +32,8 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name_address = params[:order][:name_address]
     end
+
+
   end
 
   def create
