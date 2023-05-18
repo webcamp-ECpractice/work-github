@@ -25,7 +25,7 @@
       <tr>
         <td>
           <%= f.label :genre_id, "ジャンル" %>
-          <%= f.select :genre_id, [["ケーキ", "1"], ["プリン", "2"],["焼き菓子","3"],["キャンディ","4"]], include_blank: "--選択して下さい--" %>
+          <%= f.select :genre_id,  options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択して下さい--" %>
         </td>
       </tr>
       <tr>
