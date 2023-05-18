@@ -1,31 +1,51 @@
-<h3>商品新規登録</h3>
 
-<%= form_with model: @item, url: admin_items_path do |f| %>
+<div class="container m-4">
+  <h3><span class="bg-warning">商品新規登録</span></h3>
 
-  <%= f.label :image, "商品画像" %>
-  <%= f.file_field :image %>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <table>
+      <tr>
+        <td>
+          <%= f.label :image, "商品画像" %>
+          <%= f.file_field :image %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :name , "商品名" %>
+          <%= f.text_field :name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :introduction, "商品説明" %>
+          <%= f.text_area :introduction %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :genre_id, "ジャンル" %>
+          <%= f.select :genre_id, [["ケーキ", "1"], ["プリン", "2"],["焼き菓子","3"],["キャンディ","4"]], include_blank: "--選択して下さい--" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :price, "税抜価格" %>
+          <%= f.text_field :price %>円
+        </td>
+      </tr>
+      <tr>
+        <td>
+           <%= f.label :is_active, "販売ステータス" %>
+           <%= f.radio_button :is_active, "true" %>
+           <%= f.label :is_active, "販売中" %>
 
-  <%= f.label :name , "商品名" %>
-  <%= f.text_field :name %>
+           <%= f.radio_button :is_active, "false" %>
+           <%= f.label :is_active, "販売停止中" %>
+        </td>
+      </tr>
+     </table>
 
-
-  <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction %>
-
-  <%= f.label :genre_id, "ジャンル" %>
-  <%= f.select :genre_id, [["ケーキ", "1"], ["プリン", "2"],["焼き菓子","3"],["キャンディ","4"]], include_blank: "--選択して下さい--" %>
-
-  <%= f.label :price, "税抜価格" %>
-  <%= f.text_field :price %>円
-
-
-  <%= f.label :is_active, "販売ステータス" %>
-  <%= f.radio_button :is_active, "true" %>
-  <%= f.label :is_active, "販売中" %>
-
-  <%= f.radio_button :is_active, "false" %>
-  <%= f.label :is_active, "販売停止中" %>
-
-  <%= f.submit '新規登録' %>
-
-<% end %>
+      <%= f.submit '新規登録', class: "btn btn-primary" %>
+  <% end %>
+</div>

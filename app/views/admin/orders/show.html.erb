@@ -1,78 +1,82 @@
-<h3>注文履歴詳細</h3>
 
-<table>
-  <tbody>
+<div class="container m-5">
+  <h3><span class="bg-warning">注文履歴詳細</span></h3>
+
+  <table class="mb-3">
+    <tbody>
+      <tr>
+        <td class="h5">購入者</td>
+        <td><%= @customer.first_name %><%= @customer.last_name %></td>
+      </tr>
+      <tr>
+        <td class="h5">注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td class="h5">配送先</td>
+        <td><%= @order.address_display %></td>
+      </tr>
+      <tr>
+        <td class="h5">支払方法</td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td class="h5">注文ステータス</td>
+        <td>
+        <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
+          <%= f.select :is_ordered, Order.is_ordereds_i18n.invert %>
+          <%= f.submit "更新",class:"btn btn-success" %>
+        <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+ <div class="row">
+  <table class="table col-8 ">
+    <thead>
+      <tr class="table table-warning">
+        <td class="h5">商品名</td>
+        <td class="h5">単価（税込み）</td>
+        <td class="h5">数量</td>
+        <td class="h5">小計</td>
+        <td class="h5">製作ステータス</td>
+      </tr>
+    </thead>
+    <% @order_details.each do |order_detail| %>
+    <tbody>
+      <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.add_tax_price %></td>
+        <td><%= order_detail.items_amount %></td>
+        <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+
+         <td>
+           <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+
+            <%= f.select :is_maked, OrderDetail.is_makeds_i18n.invert %>
+            <%= f.submit "更新" , class:"btn btn-success"%>
+           <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+
+  <table class= "col-2 ml-4">
     <tr>
-      <td>購入者</td>
-      <td><%= @customer.first_name %><%= @customer.last_name %></td>
+      <td>商品合計</td>
+      <td><%= @total.round.to_s(:delimited) %>円</td>
     </tr>
     <tr>
-      <td>注文日</td>
-      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      <td>送料</td>
+      <td><%= @order.postage %>円</td>
     </tr>
     <tr>
-      <td>配送先</td>
-      <td><%= @order.address_display %></td>
+      <td>請求金額合計</td>
+      <td><%= @order.payment_amount.round.to_s(:delimited) %>円</td>
     </tr>
-    <tr>
-      <td>支払方法</td>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <td>注文ステータス</td>
-      <td>
-      <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
-        <%= f.select :is_ordered, Order.is_ordereds_i18n.invert %>
-        <%= f.submit "更新" %>
-      <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  </table>
+  </div>
 
-
-<table>
-  <thead>
-    <tr>
-      <td>商品名</td>
-      <td>単価（税込み）</td>
-      <td>数量</td>
-      <td>小計</td>
-      <td>製作ステータス</td>
-    </tr>
-  </thead>
-  <% @order_details.each do |order_detail| %>
-  <tbody>
-    <tr>
-      <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.add_tax_price %></td>
-      <td><%= order_detail.items_amount %></td>
-      <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-
-       <td>
-         <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
-
-          <%= f.select :is_maked, OrderDetail.is_makeds_i18n.invert %>
-          <%= f.submit "更新" %>
-         <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
-
-<table>
-  <tr>
-    <td>商品合計</td>
-    <td><%= @total.round.to_s(:delimited) %>円</td>
-  </tr>
-  <tr>
-    <td>送料</td>
-    <td><%= @order.postage %>円</td>
-  </tr>
-  <tr>
-    <td>請求金額合計</td>
-    <td><%= @order.payment_amount.round.to_s(:delimited) %>円</td>
-  </tr>
-</table>
-
+</div>
