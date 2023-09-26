@@ -1,0 +1,50 @@
+<div class="container-fluid m-5">
+
+    <h3 class="mb-3"><span class="bg-warning"><%= @customer.first_name + @customer.last_name %>さんの会員詳細</span></h3>
+
+    <table class="mb-3">
+       <tr>
+        <th>会員ID</th>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= @customer.first_name_kana %>  <%= @customer.last_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></td>
+      </tr>
+       <tr>
+        <th>電話番号</th>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <% if @customer.is_deleted %>
+          <td>退会</td>
+        <% else %>
+          <td>有効</td>
+        <% end %>
+      </tr>
+    </table>
+
+
+
+    <%= link_to "編集する", edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
+
+
+    <%= link_to "注文履歴一覧を見る", admin_customer_order_path(@customer.id),class:"btn btn-primary" %>
+  </div>

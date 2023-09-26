@@ -1,0 +1,29 @@
+
+<div class="container p-5">
+
+  <h4>ようこそ、ながのCAKEへ！</h4>
+  <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
+  <h4>会員でない方も商品の閲覧はできますが、</h4>
+  <h4>購入には会員登録が必要になります。</h4>
+
+  <div class="row pt-5 pb-5">
+    <h1 class="font-weight-bold">新着商品</h1>
+  </div>
+
+  <div class="row justify-content-around" >
+
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image,size: "200x200" %>
+
+          <h5 class="pt-3"><%= item.name %></h5>
+
+          <h5 class="pt-3">￥<%= item.add_tax_price %></h5>
+        <% end %>
+
+      <% end %>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <h4 class="pt-4"><%= link_to "全ての商品を見る＞", items_path  %></h4>
+  </div>
+</div>

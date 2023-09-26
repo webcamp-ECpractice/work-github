@@ -1,0 +1,23 @@
+<div class="container p-5">
+
+<h1 class="font-weight-bold">商品一覧(全<%= @items_amount.where(is_active: true).count %>件)</h1>
+
+
+
+  <div class="row justify-content-around" >
+
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image,size: "250x250" %>
+
+          <h5 class="pt-3"><%= item.name %></h5>
+
+          <h5 class="pt-3 pb-3">￥<%= item.add_tax_price %></h5>
+        <% end %>
+      <% end %>
+  </div>
+  <h4 class="d-flex justify-content-center">
+    <%= paginate @items %>
+  </h4>
+
+ </div>
